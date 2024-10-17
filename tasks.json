@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "title": "task",
+    "description": "des",
+    "startDate": "06-10-2024",
+    "deadline": "10-10-2024",
+    "priority": "HIGH",
+    "status": "PENDING",
+    "subtasks": [],
+    "reminderServices": []
+  },
+  {
+    "id": 2,
+    "title": "пв",
+    "description": "впр",
+    "startDate": "12-12-1212",
+    "deadline": "12-12-1313",
+    "priority": "LOW",
+    "status": "PENDING",
+    "subtasks": [
+      {
+        "id": 3,
+        "title": "спт",
+        "description": "впт",
+        "startDate": "12-12-1212",
+        "deadline": "12-12-1213",
+        "priority": "LOW",
+        "status": "PENDING",
+        "subtasks": [],
+        "reminderServices": []
+      }
+    ],
+    "reminderServices": []
+  },
+  {
+    "id": 4,
+    "title": "пр",
+    "description": "впр",
+    "startDate": "12-12-1212",
+    "deadline": "12-12-1313",
+    "priority": "LOW",
+    "status": "PENDING",
+    "subtasks": [],
+    "reminderServices": []
+  },
+  {
+    "id": 5,
+    "title": "ап",
+    "description": "ап",
+    "startDate": "11-11-1111",
+    "deadline": "12-12-1111",
+    "priority": "MEDIUM",
+    "status": "PENDING",
+    "subtasks": [
+      {
+        "id": 6,
+        "title": "віпар",
+        "description": "впр",
+        "startDate": "11-12-1212",
+        "deadline": "12-12-1212",
+        "priority": "MEDIUM",
+        "status": "PENDING",
+        "subtasks": [],
+        "reminderServices": []
+      }
+    ],
+    "reminderServices": []
+  },
+  {
+    "id": 7,
+    "title": "ап",
+    "description": "аі",
+    "startDate": "11-11-1111",
+    "deadline": "12-12-1111",
+    "priority": "HIGH",
+    "status": "PENDING",
+    "subtasks": [],
+    "reminderServices": []
+  }
+]

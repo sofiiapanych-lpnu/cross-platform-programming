@@ -1,0 +1,159 @@
+[
+  {
+    "id": 1,
+    "name": "project",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "task",
+        "description": "descr",
+        "startDate": "17-10-2024",
+        "deadline": "01-11-2024",
+        "priority": "HIGH",
+        "status": "PENDING",
+        "subtasks": [
+          {
+            "id": 2,
+            "title": "subtask",
+            "description": "des",
+            "startDate": "17-10-2024",
+            "deadline": "20-10-2024",
+            "priority": "MEDIUM",
+            "status": "PENDING",
+            "subtasks": [],
+            "reminderServices": []
+          },
+          {
+            "id": 3,
+            "title": "sub2",
+            "description": "s",
+            "startDate": "17-10-2024",
+            "deadline": "18-10-2024",
+            "priority": "LOW",
+            "status": "PENDING",
+            "subtasks": [],
+            "reminderServices": []
+          }
+        ],
+        "reminderServices": []
+      },
+      {
+        "id": 4,
+        "title": "task2",
+        "description": "dddd",
+        "startDate": "18-10-2024",
+        "deadline": "18-11-2024",
+        "priority": "MEDIUM",
+        "status": "PENDING",
+        "subtasks": [],
+        "reminderServices": []
+      }
+    ],
+    "startDate": "17-10-2024",
+    "endDate": "17-12-2024"
+  },
+  {
+    "id": 2,
+    "name": "project2",
+    "tasks": [
+      {
+        "id": 5,
+        "title": "task pr2",
+        "description": "ffff",
+        "startDate": "09-09-2024",
+        "deadline": "09-10-2024",
+        "priority": "MEDIUM",
+        "status": "DONE",
+        "subtasks": [
+          {
+            "id": 6,
+            "title": "sub2",
+            "description": "ssss",
+            "startDate": "10-09-2024",
+            "deadline": "30-09-2024",
+            "priority": "MEDIUM",
+            "status": "DONE",
+            "subtasks": [],
+            "reminderServices": []
+          }
+        ],
+        "reminderServices": []
+      },
+      {
+        "id": 7,
+        "title": "taskkkk",
+        "description": "no",
+        "startDate": "10-10-2024",
+        "deadline": "20-10-2024",
+        "priority": "LOW",
+        "status": "IN_PROGRESS",
+        "subtasks": [],
+        "reminderServices": []
+      }
+    ],
+    "startDate": "09-09-2024",
+    "endDate": "24-10-2024"
+  },
+  {
+    "id": 4,
+    "name": "eeee",
+    "tasks": [
+      {
+        "id": 8,
+        "title": "taskkk",
+        "description": "ded",
+        "startDate": "11-11-1111",
+        "deadline": "12-12-1111",
+        "priority": "MEDIUM",
+        "status": "DONE",
+        "subtasks": [
+          {
+            "id": 9,
+            "title": "gfffg",
+            "description": "fgfgfgf",
+            "startDate": "11-11-1111",
+            "deadline": "12-12-1212",
+            "priority": "LOW",
+            "status": "DONE",
+            "subtasks": [],
+            "reminderServices": []
+          }
+        ],
+        "reminderServices": []
+      }
+    ],
+    "startDate": "11-11-2024",
+    "endDate": "12-11-2024"
+  },
+  {
+    "id": 5,
+    "name": "pppp",
+    "tasks": [
+      {
+        "id": 10,
+        "title": "task",
+        "description": "f",
+        "startDate": "18-10-2024",
+        "deadline": "18-10-2024",
+        "priority": "HIGH",
+        "status": "IN_PROGRESS",
+        "subtasks": [
+          {
+            "id": 11,
+            "title": "subtask",
+            "description": "s",
+            "startDate": "18-10-2024",
+            "deadline": "19-10-2024",
+            "priority": "MEDIUM",
+            "status": "IN_PROGRESS",
+            "subtasks": [],
+            "reminderServices": []
+          }
+        ],
+        "reminderServices": []
+      }
+    ],
+    "startDate": "18-10-2024",
+    "endDate": "20-10-2024"
+  }
+]
