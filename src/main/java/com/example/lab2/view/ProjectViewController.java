@@ -1,8 +1,8 @@
 package com.example.lab2.view;
 
-import com.example.lab2.Helpers.ProjectIOHelper;
-import com.example.lab2.model.Project;
-import com.example.lab2.model.Task;
+import com.example.lab2.helpers.ProjectIOHelper;
+import com.example.lab2.models.Project;
+import com.example.lab2.models.Task;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -28,7 +28,6 @@ public class ProjectViewController extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Ініціалізуємо графіки
         projectDeadlineGraph = new BarChart<>(new CategoryAxis(), new NumberAxis());
         taskDeadlineGraph = new BarChart<>(new CategoryAxis(), new NumberAxis());
         subtaskDeadlineGraph = new BarChart<>(new CategoryAxis(), new NumberAxis());
@@ -39,30 +38,26 @@ public class ProjectViewController extends Application {
         subtaskDeadlineGraph.setTitle("Дедлайни підзавдань");
         taskStatusPieChart.setTitle("Статус завдань");
 
-        List<Project> projects = ProjectIOHelper.readProjectsFromJson();
+        List<Project> projects = ProjectIOHelper.readProjectsFromJson("projects.json");
 
-        // Відображаємо графік з проектами та дедлайнами
         displayProjectDeadlineGraph(projects);
 
-        // Кнопка для відкриття календаря
         Button calendarButton = new Button("Відкрити календар");
         calendarButton.setOnAction(event -> openCalendar(projects));
 
-        // Створення панелі для графіків
         VBox vbox = new VBox(calendarButton, projectDeadlineGraph, taskDeadlineGraph, subtaskDeadlineGraph, taskStatusPieChart);
         vbox.setSpacing(10);
         vbox.setPadding(new Insets(10));
 
         Scene scene = new Scene(vbox, 1000, 800);
 
-        // Налаштування і відображення вікна
         primaryStage.setTitle("Проекти та завдання");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     private void openCalendar(List<Project> projects) {
-        new CalendarView(projects); // Відкриваємо нове вікно календаря
+        new CalendarView(projects);
     }
 
     private void displayProjectDeadlineGraph(List<Project> projects) {

@@ -1,6 +1,6 @@
 package com.example.lab2.service;
 
-import com.example.lab2.model.Task;
+import com.example.lab2.models.Task;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

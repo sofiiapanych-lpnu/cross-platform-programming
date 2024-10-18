@@ -1,9 +1,9 @@
 package com.example.lab2.controllers;
 
 
-import com.example.lab2.Helpers.ProjectIOHelper;
+import com.example.lab2.helpers.ProjectIOHelper;
 import com.example.lab2.main.Context;
-import com.example.lab2.model.Project;
+import com.example.lab2.models.Project;
 
 import java.util.*;
 

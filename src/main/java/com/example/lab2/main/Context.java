@@ -1,9 +1,9 @@
 package com.example.lab2.main;
 
 import com.example.lab2.controllers.BaseController;
-import com.example.lab2.Helpers.ProjectIOHelper;
-import com.example.lab2.model.Project;
-import com.example.lab2.model.Task;
+import com.example.lab2.helpers.ProjectIOHelper;
+import com.example.lab2.models.Project;
+import com.example.lab2.models.Task;
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ public class Context {
     private Project currentProject;
     private Task currentTask;
     private BaseController state;
+    private static String FILE_PATH = "projects.json";
 
     public void setState(BaseController state) {
         this.state = state;
@@ -23,11 +24,12 @@ public class Context {
     }
 
     public Context() {
-       projects = ProjectIOHelper.readProjectsFromJson();
+       projects = ProjectIOHelper.readProjectsFromJson(FILE_PATH);
     }
 
     public void save(){
-        ProjectIOHelper.writeProjectsToJson(projects);
+        ProjectIOHelper.setFilePath(FILE_PATH);
+        ProjectIOHelper.writeProjectsToJson(projects, FILE_PATH);
     }
 
     public List<Project> getProjects() {

@@ -1,7 +1,7 @@
-package com.example.lab2.Helpers;
+package com.example.lab2.helpers;
 
 import com.example.lab2.main.LocalDateAdapter;
-import com.example.lab2.model.Project;
+import com.example.lab2.models.Project;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -18,8 +18,10 @@ import java.util.Scanner;
 public class ProjectIOHelper {
     private static final Scanner scanner = new Scanner(System.in);
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).setPrettyPrinting().create();
-    private static final String FILE_PATH = "projects.json";
-
+    private static String FILE_PATH = "projects.json";
+    public static void setFilePath(String filePath) {
+        FILE_PATH = filePath;
+    }
     public static Project createProject() {
         System.out.println("Enter project name:");
         String name = scanner.nextLine();
@@ -34,7 +36,7 @@ public class ProjectIOHelper {
         return project;
     }
 
-    private static LocalDate getDateInput(String prompt) {
+    static LocalDate getDateInput(String prompt) {
         LocalDate date = null;
         boolean valid = false;
 
@@ -57,7 +59,7 @@ public class ProjectIOHelper {
         System.out.println(project.getProjectInfo());
     }
 
-    public static void writeProjectsToJson(List<Project> projects) {
+    public static void writeProjectsToJson(List<Project> projects, String FILE_PATH) {
 //        List<Project> existingProjects = readProjectsFromJson();
 //
 //        List<Project> allProjects = new ArrayList<>(existingProjects);
@@ -72,12 +74,12 @@ public class ProjectIOHelper {
         }
     }
 
-    public static List<Project> readProjectsFromJson() {
+    public static List<Project> readProjectsFromJson(String FILE_PATH) {
         List<Project> projects = new ArrayList<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH))) {
             String firstLine = bufferedReader.readLine();
 
-            if (firstLine == null) {
+            if (firstLine == null || firstLine.trim().isEmpty()) {
                 return projects;
             }
 
@@ -95,5 +97,6 @@ public class ProjectIOHelper {
         }
         return projects;
     }
+
 
 }

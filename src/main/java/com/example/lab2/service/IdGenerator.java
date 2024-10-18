@@ -1,8 +1,8 @@
 package com.example.lab2.service;
 
-import com.example.lab2.Helpers.ProjectIOHelper;
-import com.example.lab2.model.Project;
-import com.example.lab2.model.Task;
+import com.example.lab2.helpers.ProjectIOHelper;
+import com.example.lab2.models.Project;
+import com.example.lab2.models.Task;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -34,17 +34,17 @@ public class IdGenerator { //singleton
     }
 
     private int loadMaxTaskId() {
-        List<Project> projects = ProjectIOHelper.readProjectsFromJson(); // Зчитуємо проекти
+        List<Project> projects = ProjectIOHelper.readProjectsFromJson("projects.json");
         return projects.stream()
-                .flatMap(project -> project.getTasks().stream()) // Всі завдання з кожного проекту
-                .flatMap(task -> Stream.concat(Stream.of(task), task.getSubtasks().stream())) // Підзадачі
-                .mapToInt(Task::getId) // Отримуємо ID завдань і підзавдань
+                .flatMap(project -> project.getTasks().stream())
+                .flatMap(task -> Stream.concat(Stream.of(task), task.getSubtasks().stream()))
+                .mapToInt(Task::getId)
                 .max()
                 .orElse(0);
     }
 
     private int loadMaxProjectId() {
-        List<Project> projects = ProjectIOHelper.readProjectsFromJson();
+        List<Project> projects = ProjectIOHelper.readProjectsFromJson("projects.json");
         return projects.stream()
                 .mapToInt(Project::getId)
                 .max()

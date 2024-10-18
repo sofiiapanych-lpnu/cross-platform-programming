@@ -1,4 +1,4 @@
-package com.example.lab2.model;
+package com.example.lab2.models;
 import com.example.lab2.service.IdGenerator;
 import com.example.lab2.service.ReminderService;
 
@@ -98,8 +98,7 @@ public class Task {
                 .collect(Collectors.toList());
     }
 
-
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @Override
     public String toString() {

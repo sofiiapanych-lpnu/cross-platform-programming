@@ -1,10 +1,10 @@
 package com.example.lab2.controllers;
 
 
-import com.example.lab2.Helpers.TaskIOHelper;
+import com.example.lab2.helpers.TaskIOHelper;
 import com.example.lab2.main.Context;
-import com.example.lab2.model.Task;
-import com.example.lab2.model.TaskStatus;
+import com.example.lab2.models.Task;
+import com.example.lab2.models.TaskStatus;
 
 import java.util.Optional;
 import java.util.Scanner;

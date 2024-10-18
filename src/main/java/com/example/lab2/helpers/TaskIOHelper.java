@@ -1,8 +1,8 @@
-package com.example.lab2.Helpers;
+package com.example.lab2.helpers;
 
-import com.example.lab2.model.Task;
-import com.example.lab2.model.TaskPriority;
-import com.example.lab2.model.TaskStatus;
+import com.example.lab2.models.Task;
+import com.example.lab2.models.TaskPriority;
+import com.example.lab2.models.TaskStatus;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,42 +1,51 @@
 package com.example.lab2.view;
 
-import com.example.lab2.model.Project;
-import com.example.lab2.model.Task;
+import com.example.lab2.models.Project;
+import com.example.lab2.models.Task;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
 
 public class CalendarView {
     private Stage stage;
     private LocalDate currentDate;
     private List<Project> projects;
     private GridPane gridPane;
+    private Label monthYearLabel;
 
     public CalendarView(List<Project> projects) {
         this.projects = projects;
-        this.currentDate = LocalDate.now(); // Встановлюємо сьогоднішню дату
+        this.currentDate = LocalDate.now();
         this.stage = new Stage();
         initialize();
     }
 
     private void initialize() {
         gridPane = new GridPane();
-        gridPane.setPadding(new Insets(10));
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(20));
+        gridPane.setHgap(15);
+        gridPane.setVgap(15);
 
         HBox navigation = new HBox();
         Button prevButton = new Button("<");
         Button nextButton = new Button(">");
         Button currentMonthButton = new Button("Сьогодні");
+        monthYearLabel = new Label();
+        monthYearLabel.setFont(new Font("Arial", 24));
+        HBox.setMargin(monthYearLabel, new Insets(0, 20, 0, 20));
 
         prevButton.setOnAction(event -> {
             currentDate = currentDate.minusMonths(1);
@@ -53,38 +62,43 @@ public class CalendarView {
             displayCalendar();
         });
 
-        navigation.getChildren().addAll(prevButton, currentMonthButton, nextButton);
-        gridPane.add(navigation, 0, 0, 7, 1); // Додаємо навігаційні кнопки до сітки
+        navigation.setAlignment(Pos.CENTER);
+        navigation.getChildren().addAll(prevButton, monthYearLabel, nextButton, currentMonthButton);
+        gridPane.add(navigation, 0, 0, 7, 1);
 
-        displayCalendar(); // Відображаємо календар
-        Scene scene = new Scene(gridPane, 700, 400);
+        displayCalendar();
+        Scene scene = new Scene(gridPane, 900, 600);
         stage.setTitle("Календар дедлайнів");
         stage.setScene(scene);
         stage.show();
     }
 
     private void displayCalendar() {
-        // Очищення попередніх даних
-        gridPane.getChildren().removeIf(node -> GridPane.getRowIndex(node) > 0); // Очищуємо все, крім рядка навігації
+        gridPane.getChildren().removeIf(node -> GridPane.getRowIndex(node) > 0);
+
+        String month = currentDate.getMonth().getDisplayName(TextStyle.FULL, new Locale("uk"));
+        int year = currentDate.getYear();
+        monthYearLabel.setText(month + " " + year);
 
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        int dayOfWeek = currentDate.withDayOfMonth(1).getDayOfWeek().getValue(); // Понеділок = 1, Неділя = 7
+        int dayOfWeek = currentDate.withDayOfMonth(1).getDayOfWeek().getValue();
         int daysInMonth = currentDate.lengthOfMonth();
 
-        // Додаємо назви днів тижня
         String[] dayNames = {"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"};
         for (int i = 0; i < dayNames.length; i++) {
-            gridPane.add(new Button(dayNames[i]), i, 1);
+            Label dayLabel = new Label(dayNames[i]);
+            dayLabel.setFont(new Font("Arial", 16));
+            dayLabel.setAlignment(Pos.CENTER);
+            gridPane.add(dayLabel, i, 1);
         }
 
-        // Заповнюємо календар
         for (int day = 1; day <= daysInMonth; day++) {
             LocalDate date = LocalDate.of(currentDate.getYear(), currentDate.getMonth(), day);
             Button dateButton = new Button(String.valueOf(day));
-            dateButton.setMinSize(100, 50);
+            dateButton.setMinSize(100, 80);
+            dateButton.setFont(new Font("Arial", 14));
             dateButton.setOnAction(event -> displayProjectsAndTasks(date));
 
-            // Додаємо назви проектів або тасків до кнопок (приклад)
             for (Project project : projects) {
                 if (project.getEndDate().equals(date)) {
                     dateButton.setText(day + "\n" + project.getName());
@@ -96,8 +110,7 @@ public class CalendarView {
                 }
             }
 
-            // Додаємо кнопку в сітку
-            gridPane.add(dateButton, (day + dayOfWeek - 2) % 7, (day + dayOfWeek - 2) / 7 + 2); // Розташування кнопки в сітці
+            gridPane.add(dateButton, (day + dayOfWeek - 2) % 7, (day + dayOfWeek - 2) / 7 + 2);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.lab2.model;
+package com.example.lab2.models;
 import com.example.lab2.service.IdGenerator;
 
 import java.time.LocalDate;
@@ -58,6 +58,7 @@ public class Project {
     public LocalDate getEndDate() {
         return endDate;
     }
+    public void setId(int id) {this.id = id;}
     public void setName(String name) {
         this.name = name;
     }
